@@ -1,19 +1,19 @@
 import java.io.*;
 
-import java.net.*;
+        import java.net.*;
 
-import java.nio.charset.Charset;
+        import java.nio.charset.Charset;
 
-import java.util.Scanner;
+        import java.util.Scanner;
 
 
 /**
 
-* Summauspalvelu
+ * Summauspalvelu
 
-*
+ *
 
-*/
+ */
 
 public class SummausPalvelu {
 
@@ -32,15 +32,15 @@ public class SummausPalvelu {
 
     private Summaaja[] summaajat;
 
-   
+
 
     /**
 
-    * Luo uuden summauspalvelun= 3126;
+     * Luo uuden summauspalvelun= 3126;
 
-    * @throws IOException
+     * @throws IOException
 
-    */
+     */
 
     public void Summauspalvelu() throws IOException {
 
@@ -69,9 +69,9 @@ public class SummausPalvelu {
 
     /**
 
-    * Luo summaajat
+     * Luo summaajat
 
-    */
+     */
 
     public void setServants(){
 
@@ -98,7 +98,7 @@ public class SummausPalvelu {
 
                 servants[i].start();
 
-               
+
 
                 String newPort = String.valueOf(port + i + 1);
 
@@ -140,13 +140,13 @@ public class SummausPalvelu {
 
     /**
 
-    * Palauttaa yhden summajaan laskemien lukujen summan
+     * Palauttaa yhden summajaan laskemien lukujen summan
 
-    * @param number summaaja
+     * @param number summaaja
 
-    * @return
+     * @return
 
-    */
+     */
 
     public synchronized int readSum(int number)
 
@@ -160,13 +160,13 @@ public class SummausPalvelu {
 
     /**
 
-    * Palauttaa yhden summajaan laskemien lukujen määrän
+     * Palauttaa yhden summajaan laskemien lukujen määrän
 
-    * @param number summaaja
+     * @param number summaaja
 
-    * @return
+     * @return
 
-    */
+     */
 
     public synchronized int readCount(int number)
 
@@ -180,26 +180,26 @@ public class SummausPalvelu {
 
     /**
 
-    * Vastaa palvelimen tekemiin testeihin
+     * Vastaa palvelimen tekemiin testeihin
 
-    * @throws InterruptedException
+     * @throws InterruptedException
 
-    */
+     */
 
     public void doTests(){
 
-       
 
-        try {           
 
-           
+        try {
+
+
 
             int num = objectIn.read()-48; //ascii python-korjaus
 
 
             System.out.println(num+  " do tests number");
 
-           
+
 
             while(num > 0 && num < 4)
 
@@ -207,41 +207,41 @@ public class SummausPalvelu {
 
                 switch(num){ // testit lähettävät kysytyt luvut
 
-                case 1:
+                    case 1:
 
-                    objectOut.write(Integer.toString(entireSum()));
+                        objectOut.write(Integer.toString(entireSum()));
 
-                    objectOut.flush();
+                        objectOut.flush();
 
-                    break;
+                        break;
 
-                case 2:
+                    case 2:
 
-                    objectOut.write(Integer.toString(highestSum()));
+                        objectOut.write(Integer.toString(highestSum()));
 
-                    objectOut.flush();
+                        objectOut.flush();
 
-                    break;
+                        break;
 
-                case 3:
+                    case 3:
 
-                    objectOut.write(Integer.toString(numberCount()));
+                        objectOut.write(Integer.toString(numberCount()));
 
-                    objectOut.flush();
+                        objectOut.flush();
 
-                    break;
+                        break;
 
-                case 0:
+                    case 0:
 
-                    return;
+                        return;
 
-                default:   
+                    default:
 
-                    objectOut.write(("-1"));
+                        objectOut.write(("-1"));
 
-                    objectOut.flush();
+                        objectOut.flush();
 
-                    break;
+                        break;
 
                 }
 
@@ -249,7 +249,7 @@ public class SummausPalvelu {
 
             }
 
-           
+
 
         }
 
@@ -269,15 +269,15 @@ public class SummausPalvelu {
 
         }
 
-       
+
 
     }
 
     /**
 
-    * Palauttaa kaikkien summien summan
+     * Palauttaa kaikkien summien summan
 
-    */
+     */
 
     public int entireSum()
 
@@ -301,13 +301,13 @@ public class SummausPalvelu {
 
     /**
 
-    * Palauttaa summaajan, jolla on suurin summa
+     * Palauttaa summaajan, jolla on suurin summa
 
-    */
+     */
 
     public int highestSum()
 
-    {   
+    {
 
         int max = readSum(0);
 
@@ -337,13 +337,13 @@ public class SummausPalvelu {
 
     /**
 
-    * Palauttaa lähetettyjen lukujen lukumäärän
+     * Palauttaa lähetettyjen lukujen lukumäärän
 
-    */
+     */
 
     public int numberCount()
 
-    {       
+    {
 
         int sum = 0;
 
@@ -363,11 +363,11 @@ public class SummausPalvelu {
 
     /**
 
-    * Yrittää luoda TCP-yhteyden IP-osoitteeseen
+     * Yrittää luoda TCP-yhteyden IP-osoitteeseen
 
-    * @param i ip-osoite, johon yhteys yritetään luoda
+     * @param i ip-osoite, johon yhteys yritetään luoda
 
-    */
+     */
 
     public void tryTCPConnection(InetAddress i)
 
@@ -387,22 +387,22 @@ public class SummausPalvelu {
 
                     sendUDPPacket(i);
 
-                   
+
 
                     serverSocket.setSoTimeout(5000);
 
-                   
+
 
                     Socket socket = serverSocket.accept();
 
-                   
+
 
                     clientSocket = socket;
 
 
                     System.out.println("TCP-connection set up");
 
-                   
+
 
                     return;
 
@@ -411,7 +411,7 @@ public class SummausPalvelu {
                 {
 
 
-                    connectionFails++;           
+                    connectionFails++;
 
 
                 }
@@ -432,11 +432,11 @@ public class SummausPalvelu {
 
     /**
 
-    * Lähettää UDP-paketin IP-osoitteeseen yhteyden muodostusta varten
+     * Lähettää UDP-paketin IP-osoitteeseen yhteyden muodostusta varten
 
-    *  * @param i IP-osoite, johon paketti lähetetään
+     *  * @param i IP-osoite, johon paketti lähetetään
 
-    */
+     */
 
     public void sendUDPPacket(InetAddress i)
 
@@ -474,9 +474,9 @@ public class SummausPalvelu {
 
     /**
 
-    * Luo oliovirran
+     * Luo oliovirran
 
-    */
+     */
 
     public void setStreams()
 
@@ -493,7 +493,7 @@ public class SummausPalvelu {
 
 //            BufferedReader inReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-//                   
+//
 
 //            String i = inReader.readLine();
 
@@ -507,7 +507,7 @@ public class SummausPalvelu {
 
             objectIn = new InputStreamReader(in);
 
-            objectOut = new OutputStreamWriter(out);           
+            objectOut = new OutputStreamWriter(out);
 
             System.out.println("Setting up object-streams");
 
@@ -517,40 +517,40 @@ public class SummausPalvelu {
 
         }
 
-       
+
 
     }
 
-   
+
 
     /**
 
-    * Luodaan palvelija, joka hoitaa summaamisen
+     * Luodaan palvelija, joka hoitaa summaamisen
 
-    */
+     */
 
-    
 
-       
 
-    
+
+
+
 
     /**
 
-    * Luokka, johon summauspalvelijat voivat kerätä summaamansa luvut
+     * Luokka, johon summauspalvelijat voivat kerätä summaamansa luvut
 
-    */
+     */
 
-    
-    
+
+
 
 /**
 
-* Ohjelman main
+ * Ohjelman main
 
-* @param args
+ * @param args
 
-*/
+ */
 
 
 
